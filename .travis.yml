@@ -1,0 +1,27 @@
+---
+sudo: required
+
+services:
+  - docker
+
+env:
+  - VERSION=0.11.1
+
+install:
+  - docker build -t lgatica/apiaryio:$VERSION -t lgatica/apiaryio:latest .
+
+script:
+  - docker run --rm lgatica/apiaryio:latest version
+
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin
+
+deploy:
+  provider: script
+  script: docker push lgatica/apiaryio
+  skip_cleanup: true
+  on:
+    branch: master
+
+notifications:
+  email: false
