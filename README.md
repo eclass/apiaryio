@@ -11,7 +11,7 @@ Supported tags and respective Dockerfile links
 - 0.11.1, latest ([Dockerfile](https://github.com/lgaticaq/apiaryio/blob/master/Dockerfile))
 
 ```dockerfile
-docker run --rm -v $PWD:/usr/src/app lgatica/apiaryio:latest apiaryio --provider=heroku --app=your-app --api-key=your-api-key
+docker run --rm -it -v $PWD:/usr/src/app -e APIARY_API_KEY=$APIARY_API_KEY lgatica/apiaryio publish --api-name=$APIARY_API_NAME --path="/path/to/apiary.apib"
 ```
 
 Example publish with gitlab ci
