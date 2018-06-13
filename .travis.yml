@@ -11,7 +11,7 @@ install:
   - docker build -t lgatica/apiaryio:$VERSION -t lgatica/apiaryio:latest .
 
 script:
-  - docker run --rm lgatica/apiaryio:latest version
+  - docker run --rm lgatica/apiaryio:latest apiary version
 
 before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin
