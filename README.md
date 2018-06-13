@@ -11,7 +11,7 @@ Supported tags and respective Dockerfile links
 - 0.11.1, latest ([Dockerfile](https://github.com/lgaticaq/apiaryio/blob/master/Dockerfile))
 
 ```dockerfile
-docker run --rm -it -v $PWD:/usr/src/app -e APIARY_API_KEY=$APIARY_API_KEY lgatica/apiaryio publish --api-name=$APIARY_API_NAME --path="/path/to/apiary.apib"
+docker run --rm -it -v $PWD:/usr/src/app -e APIARY_API_KEY=$APIARY_API_KEY lgatica/apiaryio apiary publish --api-name="<API_NAME>" --path="/path/to/apiary.apib"
 ```
 
 Example publish with gitlab ci
@@ -21,7 +21,7 @@ apiary:
   image: lgatica/apiaryio
   stage: deploy
   script:
-    - publish --api-name="$APIARY_API_NAME" --path="/path/to/apiary.apib"
+    - apiary publish --api-name="<API_NAME>" --path="/path/to/apiary.apib"
   only:
     - master
   environment: production

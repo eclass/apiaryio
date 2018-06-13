@@ -10,7 +10,3 @@ RUN apk add --no-cache --virtual build-dependencies make gcc g++ && \
   apk del build-dependencies
 
 WORKDIR /usr/src/app
-
-ENTRYPOINT [ "apiary" ]
-
-CMD  ["--help" ]
